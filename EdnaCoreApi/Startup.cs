@@ -30,6 +30,11 @@ namespace EdnaCoreApi
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
 
+            services.AddCors(options =>
+            {
+                options.AddPolicy("anyorigin",
+                    policy => policy.AllowAnyOrigin().AllowAnyHeader().AllowAnyMethod());
+            });
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
